@@ -25,13 +25,13 @@ There are middlewares for each user type - `AdminMiddleware`, `UserMiddleware`, 
 
 ```
 public function handle(Request $request, Closure $next): Response
-    {
-        if (auth()->check() && auth()->user()->isAdmin()) {
-            return $next($request);
-        }
-
-        return redirect('/');
+{
+    if (auth()->check() && auth()->user()->isAdmin()) {
+        return $next($request);
     }
+
+    return redirect('/');
+}
 ```
 
 The middlewares are given alias names in `app\Http\Kernel.php` in the array `protected $middlewareAliases`. Then the middlewares are assigned to routes in `routes\web.php`
